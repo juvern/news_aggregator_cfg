@@ -1,0 +1,86 @@
+
+<div class="card text-center">
+  <div class="card-header">
+    You are at latitude <%= @lat %> and longitude <%= @long %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Weather and Forecast</h5>
+    <p class="card-text">
+    	The current weather is <%= @current_weather %>. 
+    	<br>The forecast is <%= @forecast_summary %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= @time_now %>
+  </div>
+
+
+<!-- <h3>Did you know that you are <%= @distance %>m from <%= @title %> which is located at the latitude and longitude of <%= @latt_long %>.</h3>
+ -->
+
+
+<br>
+<h4>Here are the <%=@tweets.length%> tweets from your area</h4><br>
+<div class="row">
+	<% @tweets.each do|tweet|%>
+	 <div class="col-sm-4">
+  	<div class="card" style="width: 18rem;">
+		  <div class="card-body">
+		    <blockquote class="blockquote mb-0">
+		      <p><%=tweet.text%>
+				<% tweet.urls.each do |url|%>
+					<a href=<%=url.url%> class="btn btn-primary">click here</a>
+				<%end%>
+		      <footer class="blockquote-footer"><%=tweet.user.screen_name%> 
+		      	<!-- <cite title="Source Title">Source Title</cite> -->
+		      	</footer>
+
+		    </blockquote>
+		  </div>
+		  		      	<div class="card-footer text-muted">
+	    			<%=tweet.created_at%>
+		  		</div>
+		</div>
+	</div>
+	
+	<%end%>
+
+</div>
+
+<br>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Inspirational quote of the day</h5>
+    <p class="card-text"><%= @quote %> </p>
+    </p>
+  </div>
+  
+</div>
+<!-- <div class="card">
+  <div class="card-header">
+    Inspirational quote of the day
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p> <%= @quote %> </p>
+    </blockquote>
+  </div>
+</div> -->
+
+<br>
+
+
+<div id="contact-form"> 
+  <h1>Get In Touch!</h1>
+
+  <form method="post" action="/signup"> 
+    <label for="name">Name: </label>
+
+    <input type="text" id="name" name="name" value="" placeholder="Agatha Frottemly" required="required" autofocus="autofocus"/>
+
+    <label for="email">Email address: </label>
+
+    <input type="email" id="email" name="email" value="" placeholder="aggs@example.com" required="required"/>
+
+    <input type="submit" value="submit" id="submit-button">
+  </form>
+</div>
